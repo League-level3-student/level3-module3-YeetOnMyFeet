@@ -34,13 +34,22 @@ public class _01_StringMethods {
 
     // Given Strings s1 and s2, return the longer String
     public static String longerString(String s1, String s2) {
-        return null;
+    	if (s1.length() > s2.length()) {
+			return s1;
+		}
+    	else {
+			return s2;
+		}
+      
     }
 
     // If String s contains the word "underscores", change all of the spaces
     // to underscores
     public static String formatSpaces(String s) {
-        return null;
+    	 if (s.contains("underscores")) {
+    		 s = s.replace(' ', '_');
+		}
+        return s;
     }
 
     // Return the name of the person whose LAST name would appear first if they
@@ -48,34 +57,58 @@ public class _01_StringMethods {
     // You cannot assume there are no extra spaces around the name, but you can
     // assume there is only one space between the first and last name
     public static String lineLeader(String s1, String s2, String s3) {
+    	
         return null;
     }
 
     // Return the sum of all numerical digits in the String
     public static int numeralSum(String s) {
-        return 0;
+    	int num = 0;
+    	for (int i = 0; i < s.length(); i++) {
+			if ("0123456789".contains(s.substring(i, i+1))) {
+				num += Integer.parseInt(s.substring(i, i+1));
+			}
+		}
+        return num;
     }
 
     // Return the number of times String substring appears in String s
     public static int substringCount(String s, String substring) {
-        return 0;
+    	int numOccurences = 0;
+    	int index = s.indexOf(substring);
+    	while ( index != -1) {
+			numOccurences++;
+			index = s.indexOf(substring, index + substring.length());
+		}
+        return numOccurences;
     }
 
     // Call Utilities.encrypt at the bottom of this file to encrypt String s
     public static String encrypt(String s, char key) {
-        return null;
+    	return Utilities.encrypt(s.getBytes(), (byte)key);
+    	
+        
     }
 
     // Call Utilities.decrypt at the bottom of this file to decrypt the
     // cyphertext (encrypted text)
     public static String decrypt(String s, char key) {
-        return null;
+    	return Utilities.decrypt(s, (byte)key);
+
     }
 
     // Return the number of words in String s that end with String substring
     // You can assume there are no punctuation marks between words
     public static int wordsEndsWithSubstring(String s, String substring) {
-        return 0;
+    	String[] list = s.split(" ");
+    	int num = 0;
+    	for (int i = 0; i < list.length; i++) {
+			if (list[i].length() < substring.length()) {
+			}else if (list[i].substring(list[i].length() - substring.length()) != null) {
+				num++;
+			}
+		}
+        return num;
     }
 
     // Given String s, return the number of characters between the first
